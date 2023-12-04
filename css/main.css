@@ -1,0 +1,228 @@
+@import url('https://fonts.googleapis.com/css2?family=Caprasimo&family=Raleway:wght@300;900&display=swap');
+*,::before,::after{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+} 
+body{
+    background-color: #fff;
+}
+body.over{
+    overflow: hidden;
+}
+.container{
+    border: 1px solid #000;
+    margin: 0 auto;
+    width: 90%;
+    background-color: #E1E1E1;
+}
+h1{
+    font-family: 'Caprasimo', cursive;
+    text-transform: uppercase;
+    color: #DD1F19;
+}
+p{
+    font-family: 'Raleway', sans-serif;   
+}
+header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('../images/pierrelefou.gif');
+    background-size: cover;
+    height: 80vh;
+    
+}
+
+.tv-content h1{
+    font-size: 5rem;
+    color: #DD1F19;
+    letter-spacing: 3px;
+}
+
+.caroussel{
+    background-color: #181818;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    overflow:hidden;
+    /* scroll-snap-type:x mandatory; */
+}
+
+.caroussel img{
+    flex-shrink: 0;
+    /* scroll-snap-align: start; */
+    height: 100%;
+    filter: grayscale(0);
+    /* margin: 10px 0px 0px 10px; */
+    width: 100%;
+    object-fit: cover;
+    animation: scroll-bar 10s linear infinite; 
+}
+
+.caroussel img:hover{
+    filter: grayscale(1);
+    animation-play-state:paused;
+}
+
+@keyframes scroll-bar {
+    0%{
+        transform: translateX(0%);
+    }
+    100%{
+        transform: translateX(100%);
+    }
+}
+ 
+.content-page{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.pages{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;  
+    margin: 50px 15px 20px;
+    color: #181818;
+}
+.pages h1{
+    font-size: 2rem;
+    margin-bottom: 30px;
+}
+.pages:not(:nth-child(3)){
+    border-right: 1px solid #181818;
+    padding: 30px;
+}
+
+.menu{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 45px;
+    right: 5%;
+    width: 100px;
+    height: 50px;
+    z-index: 200;
+    cursor: pointer;
+}
+
+.menu::before{
+    content: "";
+    position: absolute;
+    height: 15px;
+    width: 50%;
+    background-color: #DD1F19;
+    transform: translateY(-10px);
+    border-radius: 6px;
+    transition: 0.5s ease-out;
+}
+
+.menu::after{
+    content: "";
+    position: absolute;
+    height: 15px;
+    width: 25%;
+    background-color: #DD1F19;
+    transform: translateY(20px);
+    border-radius: 6px;
+    transition: 0.5s ease-out; 
+}
+
+.menu.active::before{
+    right: 40px;
+    height: 80px;
+    width: 10px;
+    transform: translate(0) rotate(45deg);
+}
+.menu.active::after{
+    right: 40px;
+    height: 80px;
+    width: 10px;
+    transform: translate(0) rotate(-45deg);
+}
+
+nav{
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(225, 225, 225, 0.6);
+    height: 100vh;
+    width: 100%;
+    z-index: 100;
+}
+
+nav.show{
+    display: flex;
+    animation: anime 0.2s ease-out;
+}
+@keyframes anime {
+    from{
+        width: 0;
+    }
+}
+ul{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+}
+
+
+ul li a{
+    font-size: 4rem;
+    color: #F4F4F4;
+    font-family: 'Caprasimo', cursive;
+    letter-spacing: 5px;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 15px;
+    transition: 0.2s;
+    font-weight: bold;
+}
+
+li{
+    list-style-type: none; 
+}
+ul a:hover{
+    color: #DD1F19;
+}
+
+footer{
+    margin-top: 50px;
+    color: #181818;
+    padding: 15px;
+}
+
+span{
+    font-weight: bolder;
+}
+
+@media  screen and (max-width: 480px){
+    .tv-content h1{
+        font-size: 4rem;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .menu, .menu::before, menu::after{
+        margin-left: 40px;
+    }
+    .content-page{
+        display: flex;
+        flex-direction: column;
+
+    }
+    .pages:not(:nth-child(3)){
+        border-right: none;
+        border-bottom-style: dotted;
+        padding: 30px;
+    }
+    .pages{
+        margin: 10px 15px 20px;
+        
+    }
+}
